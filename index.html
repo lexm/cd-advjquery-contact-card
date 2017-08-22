@@ -9,37 +9,39 @@
   function flipCard() {
     $(this).children().toggle();
   }
-  function makeCard(event) {
-    event.preventDefault();
-    var newCard = '<section class="contact">';
-    newCard += '<h2>' + $('input[name="fname"]').val();
-    newCard += ' ' + $('input[name="lname"]').val() + '</h2>';
-    newCard += '<h3>Click for description!</h3>';
-    newCard += '<p>' + $('textarea').val() + '</p>';
-    newCard += '</section>';
+  function makeCard(fname, lname, desc) {
+    var newCard = `<section class="contact">
+        <h2>` + fname + ` ` + lname + `</h2>
+        <h3>Click for description!</h3>
+        <p>` + desc + `</p>
+      </section>`;
     $('aside').append(newCard);
-    $('input[type="text"], textarea').val('');
   }
   $(document).ready(function() {
-    $(document).on('click', 'section', flipCard);
+    $('aside').on('click', 'section', flipCard);
     $('form').submit(function(event) {
-      makeCard(event);
+      event.preventDefault();
+      var fname = $('input[name="fname"]').val();
+      var lname = $('input[name="lname"]').val();
+      var desc = $('textarea').val();
+      makeCard(fname, lname, desc);
+      $('input[type="text"], textarea').val('');
     });
   });
   </script>
 </head>
 <body>
   <main>
-    <form action="#">
+    <form action="#" method="post">
       <label for="fname">First Name:</label>
-      <input type="text" name="fname" for="fname" value="">
+      <input type="text" name="fname" value="">
       <br>
       <label for="lname">Last Name:</label>
-      <input type="text" name="lname" for="lname" value="">
+      <input type="text" name="lname" value="">
       <br>
       <label for="desc">Description:</label>
       <br>
-      <textarea name="desc" rows="8" cols="80" for="desc" placeholder="Enter description:"></textarea>
+      <textarea name="desc" rows="8" cols="80" placeholder="Enter description:"></textarea>
       <br>
       <input type="submit" name="Add User">
     </form>
