@@ -18,9 +18,10 @@
     newCard += '<p>' + $('textarea').val() + '</p>';
     newCard += '</section>';
     $('aside').append(newCard);
+    $('input[type="text"], textarea').val('');
   }
   $(document).ready(function() {
-    $('section').on('click', flipCard);
+    $(document).on('click', 'section', flipCard);
     $('form').submit(function(event) {
       makeCard(event);
     });
@@ -44,11 +45,6 @@
     </form>
   </main>
   <aside>
-    <section class="contact">
-      <h2>Firstie Lastie</h2>
-      <h3>Click for description!</h3>
-      <p>This here is totally a description of like, a real dude...</p>
-    </section>
   </aside>
 </body>
 </html>
