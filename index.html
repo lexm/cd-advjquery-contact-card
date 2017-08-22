@@ -7,10 +7,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
   function flipCard() {
-    $('section > *').toggle();
+    $(this).children().toggle();
+  }
+  function makeCard(event) {
+    event.preventDefault();
+    var newCard = '<section class="contact">';
+    newCard += '<h2>' + $('input[name="fname"]').val();
+    newCard += ' ' + $('input[name="lname"]').val() + '</h2>';
+    newCard += '<h3>Click for description!</h3>';
+    newCard += '<p>' + $('textarea').val() + '</p>';
+    newCard += '</section>';
+    $('aside').append(newCard);
   }
   $(document).ready(function() {
     $('section').on('click', flipCard);
+    $('form').submit(function(event) {
+      makeCard(event);
+    });
   });
   </script>
 </head>
