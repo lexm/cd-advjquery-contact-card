@@ -6,6 +6,12 @@
   <title>The CodingDojo contact page</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
+  function flipCard() {
+    $('section > *').toggle();
+  }
+  $(document).ready(function() {
+    $('section').on('click', flipCard);
+  });
   </script>
 </head>
 <body>
@@ -24,5 +30,12 @@
       <input type="submit" name="Add User">
     </form>
   </main>
+  <aside>
+    <section class="contact">
+      <h2>Firstie Lastie</h2>
+      <h3>Click for description!</h3>
+      <p>This here is totally a description of like, a real dude...</p>
+    </section>
+  </aside>
 </body>
 </html>
